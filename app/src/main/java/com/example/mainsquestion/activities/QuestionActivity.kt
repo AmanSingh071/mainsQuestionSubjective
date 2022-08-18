@@ -1,24 +1,14 @@
-package com.example.mainsquestion
+package com.example.mainsquestion.activities
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.example.mainsquestion.MainActivity.Companion.config2
-import com.example.mainsquestion.MainActivity.Companion.datamo
-import com.example.mainsquestion.MainActivity.Companion.modelsdata
+import com.example.mainsquestion.activities.MainActivity.Companion.datamo
+import com.example.mainsquestion.activities.MainActivity.Companion.modelsdata
+import com.example.mainsquestion.Models.models
+import com.example.mainsquestion.adapter.subtopismainadapter
 
-import com.example.mainsquestion.databinding.ActivityMainBinding
 import com.example.mainsquestion.databinding.SubtopicactivityBinding
-import com.example.socialapp.uploadAdapter
-import io.realm.Realm
-import io.realm.mongodb.App
-import io.realm.mongodb.AppConfiguration
-import io.realm.mongodb.Credentials
-import io.realm.mongodb.sync.SyncConfiguration
 
 class questionActivity : AppCompatActivity() {
     companion object{

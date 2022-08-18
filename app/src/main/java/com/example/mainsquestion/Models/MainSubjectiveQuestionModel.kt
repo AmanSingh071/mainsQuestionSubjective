@@ -1,4 +1,4 @@
-package com.example.mainsquestion
+package com.example.mainsquestion.Models
 
 import io.realm.annotations.PrimaryKey
 import io.realm.annotations.RealmField
@@ -12,6 +12,7 @@ open class mainSubjectiveQuestionModel :io.realm.RealmObject() {
     var question:String=""
     var topic:String=""
     var ans:String=""
+
 
 
 

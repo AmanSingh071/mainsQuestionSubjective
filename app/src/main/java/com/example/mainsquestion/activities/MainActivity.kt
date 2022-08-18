@@ -1,38 +1,25 @@
-package com.example.mainsquestion
+package com.example.mainsquestion.activities
 
 
-import android.app.DownloadManager
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import com.example.mainsquestion.Address
+import com.example.mainsquestion.Models.mainSubjectiveQuestionModel
+import com.example.mainsquestion.Models.models
+import com.example.mainsquestion.adapter.dailyquestionAdapter
+import com.example.mainsquestion.adapter.reviseConceptAdapter
 import com.example.mainsquestion.databinding.ActivityMainBinding
 import com.example.mainsquestion.databinding.ActivityMainsQuestiontypeBinding
+import com.example.mainsquestion.mainDailyModel
 import com.example.socialapp.uploadAdapter
-import com.mongodb.BasicDBObject
-import com.mongodb.client.model.Filters.eq
-import com.mongodb.client.model.Updates
 import io.realm.Realm
-import io.realm.RealmConfiguration
-import io.realm.kotlin.internal.interop.OBJECT_ID_BYTES_SIZE
 import io.realm.mongodb.*
-import io.realm.mongodb.mongo.MongoClient
 import io.realm.mongodb.mongo.MongoCollection
 import io.realm.mongodb.mongo.MongoDatabase
-import io.realm.mongodb.mongo.iterable.MongoCursor
 import io.realm.mongodb.sync.SyncConfiguration
-import io.realm.mongodb.sync.SyncSession
-import mainqQuestiontypeAdapter.Companion.size
 import org.bson.Document
-import org.bson.conversions.Bson
-import org.bson.types.ObjectId
-import org.litote.kmongo.MongoOperator
-import java.util.*
 
 
 class MainActivity  : AppCompatActivity() {
@@ -48,11 +35,17 @@ class MainActivity  : AppCompatActivity() {
         lateinit var mainSubjectQuesListt: List<mainSubjectiveQuestionModel>
         lateinit var modelsdata: List<models>
         lateinit var config2:SyncConfiguration
+         var user2:String=""
+
+        var realm: Realm? =null
+        var realmano: Realm? =null
+        lateinit var app2: App
         lateinit var config3:SyncConfiguration
         var  i:Int?=0
-        var user2: User? = null
+
 
     }
+    var position=0
     var user: User? = null
     var mongoclient  =null
      var mongoDatabase:MongoDatabase?=null
@@ -64,7 +57,6 @@ class MainActivity  : AppCompatActivity() {
 
     var list= arrayListOf<Address>()
 
-    lateinit var realm:Realm
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -81,8 +73,9 @@ Realm.init(this)
 
 
         val app: App = App(AppConfiguration.Builder(appid).build())
+        var credentials: Credentials = Credentials.emailPassword("admin@gmail.com","aman123")
 
-        app.loginAsync(Credentials.anonymous() ,App.Callback { it ->
+        app.loginAsync(credentials ,App.Callback { it ->
             if (it.isSuccess)
             {
                 Log.e("User","Logged success")
@@ -102,37 +95,37 @@ Realm.init(this)
 
 
 
-                  config2 = SyncConfiguration.Builder(it.get(),it.get().id).allowWritesOnUiThread(true).build()
+                  config2 = SyncConfiguration.Builder(it.get(),it.get().id).allowWritesOnUiThread(true).allowQueriesOnUiThread(true).build()
 
-                val realm: Realm = Realm.getInstance(config2)
+                 realmano  = Realm.getInstance(config2)
 
-               realm.executeTransactionAsync {
-                   it.insert(Address().apply { this.name = no22 })
+                realmano ?.executeTransactionAsync {
+                    it.insert(Address().apply { this.name = no22 })
 
-               }
+                }
 
 
 
-                realm.executeTransaction { transactionRealm ->
+                realmano ?.executeTransaction { transactionRealm ->
                     transactionRealm.insert(models().apply { this.name=no22
-                    this.pos=no2222})
+                        this.pos=no2222})
                 }
 
 
 
 
-              datamo  = realm.where(Address::class.java).findAll()
+              datamo  =  realmano ?.where(Address::class.java)?.findAll()!!
 
-                modelsdata = realm.where(models::class.java).findAll()
-               maindailyqList = realm.where(mainDailyModel::class.java).findAll()
-                 mainSubjectQuesListt = realm.where(mainSubjectiveQuestionModel::class.java).findAll()
+                modelsdata =  realmano ?.where(models::class.java)?.findAll()!!
+               maindailyqList =  realmano ?.where(mainDailyModel::class.java)?.findAll()!!
+                 mainSubjectQuesListt =  realmano ?.where(mainSubjectiveQuestionModel::class.java)!!.findAll()
 
                 //topic recycler view
 
                var topiclinearlayout= LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false)
 
                 val recyviewtopic=binding.recy
-                val adaptertopic = uploadAdapter(this,datamo)
+                val adaptertopic = uploadAdapter(this, datamo)
                 recyviewtopic.adapter = adaptertopic
                 recyviewtopic.layoutManager=topiclinearlayout
 
@@ -154,8 +147,8 @@ Realm.init(this)
                 recyrevise1.layoutManager= linearlayoutrevise2
 
 
-
-                   realm.executeTransaction { transactionRealm ->
+/*
+                    realm.executeTransaction { transactionRealm ->
                     transactionRealm.insert(mainDailyModel().apply { this.question=question
                         i= binding.dailyquesrecy.adapter?.itemCount!!
 
@@ -174,7 +167,7 @@ Realm.init(this)
                         this.topic=topic
 
                     })
-                }
+                }*/
 
 
 
@@ -191,14 +184,26 @@ Realm.init(this)
 
       var appid:String="mainsquestion-gbrkk"
 
-        val app2: App = App(AppConfiguration.Builder(appid).build())
-        var credentials2: Credentials = Credentials.emailPassword("akshatamanakshat@gmail.com","aman123")
+          app2 = App(AppConfiguration.Builder(appid).build())
+        var credentials2: Credentials = Credentials.emailPassword("new@gmail.com","aman123")
         app2.loginAsync(credentials2 , App.Callback {
             if (it.isSuccess)
             {
                 Log.e("User","Logged success")
-                user2 =app2.currentUser()
+                 user2 = app2.currentUser()?.id.toString()
 
+
+           var config3 = SyncConfiguration.Builder(it.get(),it.get().id).allowWritesOnUiThread(true).allowQueriesOnUiThread(true).build()
+
+                  realm = Realm.getInstance(config3)
+
+            /*    var linearlayoutrevise2= LinearLayoutManager(this)
+
+                val recyrevise1=binding.dailyquesrecy
+                val adapterreivse1 =
+                    user2?.let { it1 -> dailyquestionAdapter(this, maindailyqList, it1) }
+                recyrevise1.adapter = adapterreivse1
+                recyrevise1.layoutManager= linearlayoutrevise2*/
 
                 var no:String="ffffwaf"
                 var no2:Int=0
@@ -207,17 +212,10 @@ Realm.init(this)
                 var question:String="Which one of the following sculptures was invariably used\n"
                 var topic:String="History"
 
-                MainActivity.config3 = SyncConfiguration.Builder(it.get(),it.get().id).allowWritesOnUiThread(true).build()
-
-                 val realm: Realm = Realm.getInstance(MainActivity.config3)
 
 
 
-            /*    var mongoclient= user2?.getMongoClient("mongodb-atlas")
-                mongoDatabase= mongoclient?.getDatabase("main")
-                mongoCollection = mongoDatabase!!.getCollection("likes")
-                var newuser:Document=Document().append("userid", user2.toString())
-                mongoDatabase!!.getCollection("likes").updateOne(eq("postid",43),Updates.addToSet("userid",newuser))*/
+
 
             }
         })
@@ -352,7 +350,9 @@ Realm.init(this)
 
     }
 
-
+      fun send(user2: User?): User? {
+          return user2
+      }
 
 
 

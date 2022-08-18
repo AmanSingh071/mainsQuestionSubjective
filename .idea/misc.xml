@@ -3,16 +3,29 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/aksha/AndroidStudioProjects/mainsquestion/app/src/main/res/drawable/commentlayout.xml" value="0.2525" />
+        <entry key="..\:/Users/aksha/AndroidStudioProjects/mainsquestion/app/src/main/res/drawable/ic_baseline_add_comment_24.xml" value="0.2575" />
         <entry key="..\:/Users/aksha/AndroidStudioProjects/mainsquestion/app/src/main/res/drawable/ic_baseline_favorite_24.xml" value="0.162" />
         <entry key="..\:/Users/aksha/AndroidStudioProjects/mainsquestion/app/src/main/res/drawable/ic_baseline_favorite_border_24.xml" value="0.207" />
+        <entry key="..\:/Users/aksha/AndroidStudioProjects/mainsquestion/app/src/main/res/drawable/ic_baseline_send_24.xml" value="0.253" />
+        <entry key="..\:/Users/aksha/AndroidStudioProjects/mainsquestion/app/src/main/res/layout/activity_comment.xml" value="0.24947916666666667" />
+        <entry key="..\:/Users/aksha/AndroidStudioProjects/mainsquestion/app/src/main/res/layout/activity_commentactivity.xml" value="0.22" />
+        <entry key="..\:/Users/aksha/AndroidStudioProjects/mainsquestion/app/src/main/res/layout/activity_commentsubjectivemains.xml" value="0.2520833333333333" />
         <entry key="..\:/Users/aksha/AndroidStudioProjects/mainsquestion/app/src/main/res/layout/activity_likes_comment.xml" value="0.37743589743589745" />
         <entry key="..\:/Users/aksha/AndroidStudioProjects/mainsquestion/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Users/aksha/AndroidStudioProjects/mainsquestion/app/src/main/res/layout/activity_main2.xml" value="0.25" />
         <entry key="..\:/Users/aksha/AndroidStudioProjects/mainsquestion/app/src/main/res/layout/activity_mains_questiontype.xml" value="0.3692708333333333" />
         <entry key="..\:/Users/aksha/AndroidStudioProjects/mainsquestion/app/src/main/res/layout/activity_question.xml" value="0.21574074074074073" />
+        <entry key="..\:/Users/aksha/AndroidStudioProjects/mainsquestion/app/src/main/res/layout/activity_reply.xml" value="0.38697916666666665" />
+        <entry key="..\:/Users/aksha/AndroidStudioProjects/mainsquestion/app/src/main/res/layout/activity_replymainssubjective.xml" value="0.3729166666666667" />
         <entry key="..\:/Users/aksha/AndroidStudioProjects/mainsquestion/app/src/main/res/layout/activity_subtopicactivity.xml" value="0.19947916666666668" />
+        <entry key="..\:/Users/aksha/AndroidStudioProjects/mainsquestion/app/src/main/res/layout/commentlayout.xml" value="0.2484375" />
+        <entry key="..\:/Users/aksha/AndroidStudioProjects/mainsquestion/app/src/main/res/layout/coomentlayout.xml" value="0.22" />
         <entry key="..\:/Users/aksha/AndroidStudioProjects/mainsquestion/app/src/main/res/layout/dailyquestionlayout.xml" value="0.25" />
         <entry key="..\:/Users/aksha/AndroidStudioProjects/mainsquestion/app/src/main/res/layout/mainsquestiontypelayout.xml" value="0.25" />
+        <entry key="..\:/Users/aksha/AndroidStudioProjects/mainsquestion/app/src/main/res/layout/replyactivity.xml" value="0.33" />
+        <entry key="..\:/Users/aksha/AndroidStudioProjects/mainsquestion/app/src/main/res/layout/replyactivitysubjectivemains.xml" value="0.3859375" />
+        <entry key="..\:/Users/aksha/AndroidStudioProjects/mainsquestion/app/src/main/res/layout/replylayout.xml" value="0.3859375" />
         <entry key="..\:/Users/aksha/AndroidStudioProjects/mainsquestion/app/src/main/res/layout/reviseoceptlayout.xml" value="0.19947916666666668" />
         <entry key="..\:/Users/aksha/AndroidStudioProjects/mainsquestion/app/src/main/res/layout/sublayout.xml" value="0.25925925925925924" />
         <entry key="..\:/Users/aksha/AndroidStudioProjects/mainsquestion/app/src/main/res/layout/subtopicactivity.xml" value="0.38333333333333336" />

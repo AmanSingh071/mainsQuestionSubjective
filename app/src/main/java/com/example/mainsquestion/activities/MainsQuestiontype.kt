@@ -1,17 +1,17 @@
-package com.example.mainsquestion
+package com.example.mainsquestion.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.mainsquestion.MainActivity.Companion.maindailyqList
+import com.example.mainsquestion.activities.MainActivity.Companion.mainSubjectQuesListt
+import com.example.mainsquestion.Models.mainSubjectiveQuestionModel
 import com.example.mainsquestion.databinding.ActivityMainsQuestiontypeBinding
-import com.example.mainsquestion.databinding.SubtopicactivityBinding
-import mainqQuestiontypeAdapter
+import com.example.mainsquestion.adapter.mainqQuestiontypeAdapter
 
 class mainsQuestiontype : AppCompatActivity() {
     private lateinit var binding:  ActivityMainsQuestiontypeBinding
     var  position:Int=0
-    lateinit var list:ArrayList<mainDailyModel>
+    lateinit var list:ArrayList<mainSubjectiveQuestionModel>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding =  ActivityMainsQuestiontypeBinding.inflate(layoutInflater)
@@ -24,7 +24,7 @@ class mainsQuestiontype : AppCompatActivity() {
 
             "uploadAdapter" -> {
                 list = ArrayList()
-                list.addAll(maindailyqList)
+                list.addAll(mainSubjectQuesListt)
                  list[position]
 
                 if ( MainActivity.modelsdata[position].name.equals("aman") ) {

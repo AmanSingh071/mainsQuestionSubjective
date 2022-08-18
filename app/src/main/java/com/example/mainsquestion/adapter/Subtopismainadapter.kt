@@ -1,4 +1,4 @@
-package com.example.mainsquestion
+package com.example.mainsquestion.adapter
 
 
 
@@ -6,17 +6,11 @@ import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.example.mainsquestion.Address
 import com.example.mainsquestion.databinding.SublayoutBinding
-import com.example.mainsquestion.databinding.ActivityMainBinding
-import com.example.mainsquestion.questionActivity
-
-
-import kotlin.collections.ArrayList
+import com.example.mainsquestion.activities.mainsQuestiontype
+import com.example.mainsquestion.Models.models
 
 
 class subtopismainadapter (private val context: Context, private var musicList:List<models>) : RecyclerView.Adapter<subtopismainadapter.MyHolder>() {

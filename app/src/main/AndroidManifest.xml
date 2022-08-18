@@ -16,16 +16,25 @@
         android:theme="@style/Theme.MainsQuestion"
         tools:targetApi="31">
         <activity
-            android:name=".mainsQuestiontype"
+            android:name=".activities.replymainssubjective"
             android:exported="false" />
         <activity
-            android:name=".likesComment"
+            android:name=".activities.Commentsubjectivemains"
             android:exported="false" />
         <activity
-            android:name=".questionActivity"
-            android:exported="true"></activity>
+            android:name=".activities.replyActivity"
+            android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".activities.activitycomment"
+            android:exported="false" />
+        <activity
+            android:name=".activities.mainsQuestiontype"
+            android:exported="false" />
+        <activity
+            android:name=".activities.questionActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activities.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

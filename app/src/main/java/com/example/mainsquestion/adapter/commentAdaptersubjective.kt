@@ -1,37 +1,34 @@
-package com.example.socialapp
+package com.example.mainsquestion.adapter
 
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.example.mainsquestion.Address
-import com.example.mainsquestion.databinding.SublayoutBinding
-import com.example.mainsquestion.databinding.ActivityMainBinding
-import com.example.mainsquestion.questionActivity
+import com.example.mainsquestion.Models.commetnmodel
+import com.example.mainsquestion.Models.mainssubjectiveCommentModel
+import com.example.mainsquestion.activities.replyActivity
+import com.example.mainsquestion.activities.replymainssubjective
+import com.example.mainsquestion.databinding.CommentlayoutBinding
 
-
-import kotlin.collections.ArrayList
-
-
-class uploadAdapter (private val context: Context, private var musicList:List<Address>) : RecyclerView.Adapter<uploadAdapter.MyHolder>() {
-
+class commentAdaptersubjective (private val context: Context, private var List:List<mainssubjectiveCommentModel>) : RecyclerView.Adapter<commentAdaptersubjective.MyHolder>() {
+    companion object{
+        var size:Int=0
+    }
 
     class MyHolder(
-        binding: SublayoutBinding
+        binding: CommentlayoutBinding
     ) : RecyclerView.ViewHolder(binding.root) {
         fun getlikebuttonstatus(audioid: Int, userid: String) {
 
 
         }
+        var comm=binding.urcommtxt
+        var reply=binding.replybtn
 
 
-        val title = binding.subtxtdis
         val root=binding.root
-
 
 
 
@@ -43,17 +40,24 @@ class uploadAdapter (private val context: Context, private var musicList:List<Ad
         // that is used to hold list item
 
 
-        return MyHolder(SublayoutBinding.inflate(LayoutInflater.from(context), parent, false))
+        return MyHolder(CommentlayoutBinding.inflate(LayoutInflater.from(context), parent, false))
     }
 
     // binds the list items to a view
     override fun onBindViewHolder(holder: MyHolder, position: Int) {
+        holder.comm.text=List[position].comment
 
-        holder.title.text = musicList[position].name
+        holder.reply.setOnClickListener {
 
-        holder.root.setOnClickListener {
             setintetnonclickitem(ref = "uploadAdapter", pos = position)
         }
+
+
+
+
+
+
+        var i=0
     }
 
 
@@ -61,12 +65,13 @@ class uploadAdapter (private val context: Context, private var musicList:List<Ad
 
     // return the number of the items in the list
     override fun getItemCount(): Int {
+        size=List.size
 
-        return musicList.size
+        return List.size
     }
     private fun setintetnonclickitem(ref:String,pos:Int)
     {
-        val intent= Intent(context, questionActivity::class.java)
+        val intent= Intent(context, replymainssubjective::class.java)
         intent.putExtra("index",pos)
         intent.putExtra("class",ref)
         ContextCompat.startActivity(context,intent,null)
