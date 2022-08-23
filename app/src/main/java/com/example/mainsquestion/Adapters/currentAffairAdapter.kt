@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mainsquestion.Models.currentAffair
+import com.example.mainsquestion.activities.currentAffairshowmore
 import com.example.mainsquestion.databinding.CurrentaffairlayoutBinding
 
 class currentAffairAdapter (private val context: Context, private var List:List<currentAffair>) : RecyclerView.Adapter<currentAffairAdapter.MyHolder>() {
@@ -20,6 +21,7 @@ class currentAffairAdapter (private val context: Context, private var List:List<
         val topic = binding.topictxt
         val subtopic = binding.subtopictxt
         val ans = binding.anstxt
+        var show=binding.showmore
 
 
     }
@@ -38,9 +40,9 @@ class currentAffairAdapter (private val context: Context, private var List:List<
         holder.subtopic.text = List[position].subtopic
         holder.ans.text = List[position].ans
 
-      /*  holder.root.setOnClickListener {
+         holder.show.setOnClickListener {
             setintetnonclickitem(ref = "uploadAdapter", pos = position)
-        }*/
+        }
     }
 
 
@@ -51,11 +53,11 @@ class currentAffairAdapter (private val context: Context, private var List:List<
 
         return List.size
     }
-  /*  private fun setintetnonclickitem(ref:String,pos:Int)
+    private fun setintetnonclickitem(ref:String,pos:Int)
     {
-        val intent= Intent(context, questionActivity::class.java)
+        val intent= Intent(context, currentAffairshowmore::class.java)
         intent.putExtra("index",pos)
         intent.putExtra("class",ref)
         ContextCompat.startActivity(context,intent,null)
-    }*/
+    }
 }
