@@ -4,13 +4,15 @@ import io.realm.annotations.PrimaryKey
 import io.realm.annotations.RealmField
 import java.util.*
 
-open class mainssubjectiveCommentModel :io.realm.RealmObject() {
+open class currentAffair :io.realm.RealmObject() {
     @PrimaryKey
     @RealmField("_id")
     var id: String? = UUID.randomUUID().toString()
-    var postid:Int?=null
-    var comment:String=""
-    var userid:String=""
-
+    var title:String=""
+    var uniqueid:Int?=null
+    var topic:String=""
+    var subtopic:String=""
+    var gs:String=""
+    var ans:String=""
 
 }
